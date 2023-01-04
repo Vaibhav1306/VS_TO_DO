@@ -13,6 +13,7 @@ export class DeleteConfirmationDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) data: any
   ) {
     this.dataFor = data;
+    console.log(data);
   }
 
   ngOnInit(): void {}

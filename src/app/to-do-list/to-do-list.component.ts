@@ -36,17 +36,18 @@ export class ToDoListComponent implements OnInit {
 
   deleteTask(index: number) {
     const currentIndex = this.getTaskList().controls.length - (index + 1);
-    const currentTask = this.getTaskList().controls[currentIndex];
+    const currentTask =
+      this.getTaskList().controls[currentIndex].value.taskName;
     const dialogRef = this.dialog.open(DeleteConfirmationDialogComponent, {
       data: currentTask,
-      width: "400px"
+      width: '400px',
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (!result) {
         return;
       }
       const control1 = this.form.controls.taskList.controls;
-      control1.splice(this.getTaskList().controls.length - (index + 1), 1);
+      control1.splice(currentIndex);
     });
   }
 
