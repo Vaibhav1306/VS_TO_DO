@@ -5,6 +5,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { DragDrop } from '../Interfaces/drag-drop';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { DeleteConfirmationDialogComponent } from '../delete-confirmation-dialog/delete-confirmation-dialog.component';
+import { EditTaskComponent } from '../edit-task/edit-task.component';
 
 @Component({
   selector: 'app-to-do-list',
@@ -63,6 +64,22 @@ export class ToDoListComponent implements OnInit {
       }
       const control1 = this.form.controls.taskList.controls;
       control1.push(new FormControl(result));
+    });
+  }
+
+  onEditTask(index: number) {
+    const currentIndex = this.getTaskList().controls.length - (index + 1);
+    const dialogRef = this.dialog.open(EditTaskComponent, {
+      data: this.getTaskList().controls[currentIndex].value,
+      disableClose: true,
+      width: '400px',
+      height: '300px',
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (!result) {
+        return;
+      }
+      this.getTaskList().controls[currentIndex].patchValue(result);
     });
   }
 }

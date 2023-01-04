@@ -17,9 +17,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
 import { DeleteConfirmationDialogComponent } from './delete-confirmation-dialog/delete-confirmation-dialog.component';
+import { EditTaskComponent } from './edit-task/edit-task.component';
 
 @NgModule({
-  declarations: [AppComponent, ToDoListComponent, AddNewTaskDialogComponent, DeleteConfirmationDialogComponent],
+  declarations: [AppComponent, ToDoListComponent, AddNewTaskDialogComponent, DeleteConfirmationDialogComponent, EditTaskComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
