@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Delete Confirmation</h2>
+<mat-dialog-content class="mat-typography">
+  Are you sure that you want to delete? <br />
+  TASK : {{ dataFor.data }}
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close (click)="onCancel()">Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="onDelete()">
+    Delete
+  </button>
+</mat-dialog-actions>

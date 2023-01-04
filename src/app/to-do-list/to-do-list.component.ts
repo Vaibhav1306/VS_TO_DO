@@ -4,6 +4,7 @@ import { AddNewTaskDialogComponent } from '../add-new-task-dialog/add-new-task-d
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { DragDrop } from '../Interfaces/drag-drop';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { DeleteConfirmationDialogComponent } from '../delete-confirmation-dialog/delete-confirmation-dialog.component';
 
 @Component({
   selector: 'app-to-do-list',
@@ -22,11 +23,31 @@ export class ToDoListComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<Array<DragDrop>>) {
-    moveItemInArray(this.getTaskList().controls, event.previousIndex, event.currentIndex);
+    moveItemInArray(
+      this.getTaskList().controls,
+      event.previousIndex,
+      event.currentIndex
+    );
   }
 
   getTaskList() {
     return this.form.controls['taskList'] as FormArray;
+  }
+
+  deleteTask(index: number) {
+    const currentIndex = this.getTaskList().controls.length - (index + 1);
+    const currentTask = this.getTaskList().controls[currentIndex];
+    const dialogRef = this.dialog.open(DeleteConfirmationDialogComponent, {
+      data: currentTask,
+      width: "400px"
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (!result) {
+        return;
+      }
+      const control1 = this.form.controls.taskList.controls;
+      control1.splice(this.getTaskList().controls.length - (index + 1), 1);
+    });
   }
 
   onAddNewTask() {
