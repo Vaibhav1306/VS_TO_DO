@@ -1,0 +1,117 @@
+.container {
+  .to-do-container {
+    min-height: 713px;
+    max-width: 600px;
+    background-color: #000000;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    .list-container {
+      max-height: 560px;
+      margin: 10px;
+
+      ::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #f4e7e7;
+        border-radius: 50px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: rgb(126, 121, 121);
+        border-radius: 50px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgb(13, 12, 12);
+      }
+
+      mat-grid-list {
+        width: 450px;
+        margin-left: 30px;
+        max-height: max-content;
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: 550px !important;
+
+        mat-grid-tile {
+          width: 200px !important;
+          height: 150px !important;
+        }
+      }
+
+      .card-container {
+        height: 150px;
+        width: 200px;
+        position: relative;
+
+        .close-icon {
+          position: absolute;
+          left: 75%;
+        }
+      }
+    }
+
+    .add-container {
+      position: absolute;
+      bottom: 5%;
+
+      .add-new-task {
+        background-color: #aed7ae;
+        font-family: cursive;
+        width: 250px;
+      }
+    }
+  }
+}
+
+.example-list {
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.example-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: move;
+  font-size: 14px;
+}
+
+.example-box:-moz-drag-over {
+  height: 150px;
+  width: 200px;
+  position: relative;
+  .close-icon {
+    position: absolute;
+    left: 75%;
+  }
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-box:last-child {
+  border: none;
+}
+
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+#example-custom-placeholder {
+  min-height: 60px;
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
