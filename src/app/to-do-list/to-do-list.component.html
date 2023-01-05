@@ -5,15 +5,44 @@
         <mat-expansion-panel-header>
           <mat-panel-title> Task Completed </mat-panel-title>
           <mat-panel-description>
-            Number of tasks compeleted :&nbsp;<strong>4</strong>
+            Number of tasks compeleted :&nbsp;<strong>{{
+              completedTasks.length
+            }}</strong>
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <mat-list>
-          <mat-list-item>Item 1</mat-list-item>
+        <mat-list *ngFor="let task of completedTasks; index as i">
+          <mat-list-item
+            ><div style="display: flex; justify-content: space-between">
+              <div
+                style="
+                  overflow: hidden;
+                  white-space: nowrap;
+                  text-overflow: ellipsis;
+                  width: 100px;
+                  padding: 10px;
+                "
+              >
+                {{ completedTasks[i].taskName }}
+              </div>
+              <div>
+                <button
+                  mat-button
+                  (click)="redeemTask(i)"
+                  style="margin-bottom: 15px"
+                >
+                  Redeem
+                </button>
+                <button
+                  mat-icon-button
+                  (click)="endTask(i)"
+                  style="margin-left: 10px"
+                >
+                  <mat-icon>close</mat-icon>
+                </button>
+              </div>
+            </div></mat-list-item
+          >
           <mat-divider></mat-divider>
-          <mat-list-item>Item 2</mat-list-item>
-          <mat-divider></mat-divider>
-          <mat-list-item>Item 3</mat-list-item>
         </mat-list>
       </mat-expansion-panel>
     </mat-accordion>
@@ -74,7 +103,13 @@
                 </p>
               </mat-card-content>
               <mat-card-actions>
-                <button mat-button style="font-size: 13px">Done</button>
+                <button
+                  mat-button
+                  (click)="finishTask(i)"
+                  style="font-size: 13px"
+                >
+                  Done
+                </button>
                 <button
                   mat-button
                   (click)="onEditTask(i)"

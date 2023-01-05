@@ -13,7 +13,7 @@ import { EditTaskComponent } from '../edit-task/edit-task.component';
   styleUrls: ['./to-do-list.component.scss'],
 })
 export class ToDoListComponent implements OnInit {
-  mock = [];
+  completedTasks: any = [];
   form: any;
   constructor(public dialog: MatDialog) {}
 
@@ -50,6 +50,24 @@ export class ToDoListComponent implements OnInit {
       const control1 = this.form.controls.taskList.controls;
       control1.splice(currentIndex, 1);
     });
+  }
+
+  endTask(index: any) {
+    this.completedTasks.splice(index, 1);
+  }
+
+  redeemTask(index: any) {
+    const control1 = this.form.controls.taskList.controls;
+    control1.push(new FormControl(this.completedTasks[index]));
+    this.endTask(index);
+  }
+
+  finishTask(index: number) {
+    const currentIndex = this.getTaskList().controls.length - (index + 1);
+    const currentTask = this.getTaskList().controls[currentIndex].value;
+    const control1 = this.form.controls.taskList.controls;
+    this.completedTasks.push(currentTask);
+    control1.splice(currentIndex, 1);
   }
 
   onAddNewTask() {
