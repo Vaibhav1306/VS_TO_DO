@@ -1,3 +1,5 @@
+# To play and view the deployed version of this app. Please follow: https://peppy-praline-b3732d.netlify.app/
+
 # ToDoList
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
