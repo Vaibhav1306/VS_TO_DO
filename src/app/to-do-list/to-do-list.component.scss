@@ -1,6 +1,11 @@
 .container {
+  .complete-panel {
+    max-width: 600px;
+    margin: auto;
+  }
+
   .to-do-container {
-    min-height: 713px;
+    min-height: 600px;
     max-width: 600px;
     background-color: #000000;
     margin: auto;
@@ -9,7 +14,7 @@
     position: relative;
 
     .list-container {
-      max-height: 560px;
+      max-height: 400px;
       margin: 10px;
 
       ::-webkit-scrollbar {
@@ -82,16 +87,6 @@
   box-sizing: border-box;
   cursor: move;
   font-size: 14px;
-}
-
-.example-box:-moz-drag-over {
-  height: 150px;
-  width: 200px;
-  position: relative;
-  .close-icon {
-    position: absolute;
-    left: 75%;
-  }
 }
 
 .cdk-drag-preview {

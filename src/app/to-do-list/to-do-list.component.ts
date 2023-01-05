@@ -48,7 +48,7 @@ export class ToDoListComponent implements OnInit {
         return;
       }
       const control1 = this.form.controls.taskList.controls;
-      control1.splice(currentIndex);
+      control1.splice(currentIndex, 1);
     });
   }
 

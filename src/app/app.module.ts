@@ -18,9 +18,18 @@ import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
 import { DeleteConfirmationDialogComponent } from './delete-confirmation-dialog/delete-confirmation-dialog.component';
 import { EditTaskComponent } from './edit-task/edit-task.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
-  declarations: [AppComponent, ToDoListComponent, AddNewTaskDialogComponent, DeleteConfirmationDialogComponent, EditTaskComponent],
+  declarations: [
+    AppComponent,
+    ToDoListComponent,
+    AddNewTaskDialogComponent,
+    DeleteConfirmationDialogComponent,
+    EditTaskComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -35,7 +44,10 @@ import { EditTaskComponent } from './edit-task/edit-task.component';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    MatExpansionModule,
+    MatDividerModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
